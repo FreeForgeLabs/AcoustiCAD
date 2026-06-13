@@ -1,0 +1,73 @@
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.installed.cfg
+MANIFEST
+
+# ── Virtual environments ───────────────────────────────────────────────────────
+venv/
+venv-pyside6/
+env/
+.venv/
+.env/
+
+# ── IDE / Editor ──────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ── Testing ───────────────────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ── User config & runtime data ────────────────────────────────────────────────
+# Don't commit user-specific config
+config/user_config.json
+
+# App data directories created at runtime (stored in ~/AcoustiCAD/)
+# These are outside the repo but listed here for clarity
+
+# ── Build artifacts ───────────────────────────────────────────────────────────
+# Note: *.spec files (PyInstaller configs) ARE tracked — they're build config
+dist/
+build/
+*.dmg
+*.exe
+*.pkg
+*.deb
+*.rpm
+
+# ── Logs & crash reports ──────────────────────────────────────────────────────
+*.log
+crashes/
+
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+
+# Scaffold artifacts
+config.conf
+
+# ── Internal dev scaffolding ──────────────────────────────────────────────────
+# Kept locally for Claude/dev sessions, never shipped to the public repo —
+# they hold personal context, machine paths, and workflow notes.
+CLAUDE.md
+TODO.md
+_RUNBOOK.md
+.tmp_sweep/

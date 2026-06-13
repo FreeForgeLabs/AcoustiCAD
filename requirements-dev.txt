@@ -1,0 +1,11 @@
+# Development-only dependencies — not needed by end users
+-r requirements.txt
+
+# Testing
+pytest>=6.0.0
+pytest-qt>=4.0.0
+
+# Build/packaging (for creating distributable releases)
+setuptools>=78.1.0
+wheel>=0.37.0
+pyinstaller>=6.0.0

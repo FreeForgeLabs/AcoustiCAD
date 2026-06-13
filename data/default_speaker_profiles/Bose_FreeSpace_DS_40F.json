@@ -1,0 +1,30 @@
+{
+  "name": "FreeSpace DS 40F",
+  "manufacturer": "Bose",
+  "model_type": "In-Ceiling",
+  "sensitivity": 89.0,
+  "power_taps": [
+    40.0,
+    20.0,
+    10.0,
+    5.0,
+    2.5
+  ],
+  "power_rating": 40.0,
+  "impedance": 8.0,
+  "frequency_range": [
+    80,
+    17000
+  ],
+  "dispersion_angle_h": 100.0,
+  "dispersion_angle_v": 100.0,
+  "directivity_factor": null,
+  "diameter": 5.25,
+  "metadata": {
+    "source": "default",
+    "notes": "5.25\" 2-way in-ceiling, 70V transformer. Bose FreeSpace commercial series. Common in retail and corporate.",
+    "created_date": "2026-04-01",
+    "modified_date": "2026-04-01"
+  },
+  "frequency_data": {}
+}

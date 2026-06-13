@@ -1,0 +1,29 @@
+{
+  "name": "AD-C6T",
+  "manufacturer": "QSC",
+  "model_type": "In-Ceiling",
+  "sensitivity": 90.0,
+  "power_taps": [
+    15.0,
+    7.5,
+    3.75,
+    1.875
+  ],
+  "power_rating": 15.0,
+  "impedance": 8.0,
+  "frequency_range": [
+    80,
+    20000
+  ],
+  "dispersion_angle_h": 120.0,
+  "dispersion_angle_v": 120.0,
+  "directivity_factor": null,
+  "diameter": 6.5,
+  "metadata": {
+    "source": "default",
+    "notes": "6.5\" 2-way in-ceiling, 70V transformer. QSC AcousticDesign series. Low-profile commercial installation.",
+    "created_date": "2026-04-01",
+    "modified_date": "2026-04-01"
+  },
+  "frequency_data": {}
+}

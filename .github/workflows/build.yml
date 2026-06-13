@@ -1,0 +1,186 @@
+name: Build Installers
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*'           # v0.9.2-beta, v1.0.0, etc — triggers a GitHub Release
+  workflow_dispatch:
+
+jobs:
+  # ─────────────────────────────────────────────────────────────
+  # Windows → PyInstaller + Inno Setup → .exe installer
+  # ─────────────────────────────────────────────────────────────
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4.2.2
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5.4.0
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        shell: cmd
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install "pyinstaller>=6.0.0" Pillow
+
+      - name: Generate Windows icon (.ico)
+        shell: python
+        run: |
+          from PIL import Image
+          img = Image.open("ui/resources/AppIcon_preview.png").convert("RGBA")
+          sizes = [(16,16),(32,32),(48,48),(64,64),(128,128),(256,256)]
+          imgs  = [img.resize(s, Image.LANCZOS) for s in sizes]
+          imgs[0].save("ui/resources/AppIcon.ico", format="ICO",
+                       sizes=[(i.width, i.height) for i in imgs],
+                       append_images=imgs[1:])
+          print("AppIcon.ico written")
+
+      - name: Build with PyInstaller
+        run: pyinstaller AcoustiCAD-windows.spec --clean -y
+
+      - name: Verify dist folder
+        shell: cmd
+        run: dir dist\AcoustiCAD\
+
+      - name: Install Inno Setup
+        run: choco install innosetup --no-progress -y
+
+      - name: Compile installer
+        shell: cmd
+        run: '"C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer\setup.iss'
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: AcoustiCAD-Windows-Setup
+          path: dist\AcoustiCAD-*-Windows-Setup.exe
+          retention-days: 30
+
+  # ─────────────────────────────────────────────────────────────
+  # macOS Intel (x86_64) → .dmg
+  # ─────────────────────────────────────────────────────────────
+  build-macos-intel:
+    runs-on: macos-12
+
+    steps:
+      - uses: actions/checkout@v4.2.2
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5.4.0
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install "pyinstaller>=6.0.0" Pillow
+
+      - name: Generate icon
+        run: python build_icon.py
+
+      - name: Build with PyInstaller
+        run: pyinstaller AcoustiCAD.spec --clean -y
+
+      - name: Create DMG
+        run: |
+          VERSION=$(cat VERSION)
+          hdiutil create \
+            -volname "AcoustiCAD ${VERSION}" \
+            -srcfolder "dist/AcoustiCAD.app" \
+            -ov -format UDZO \
+            "dist/AcoustiCAD-${VERSION}-macOS-Intel.dmg"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: AcoustiCAD-macOS-Intel-DMG
+          path: dist/AcoustiCAD-*-macOS-Intel.dmg
+          retention-days: 30
+
+  # ─────────────────────────────────────────────────────────────
+  # macOS Apple Silicon (arm64) → .dmg
+  # ─────────────────────────────────────────────────────────────
+  build-macos-arm:
+    runs-on: macos-14
+
+    steps:
+      - uses: actions/checkout@v4.2.2
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5.4.0
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install "pyinstaller>=6.0.0" Pillow
+
+      - name: Generate icon
+        run: python build_icon.py
+
+      - name: Build with PyInstaller
+        run: pyinstaller AcoustiCAD.spec --clean -y
+
+      - name: Create DMG
+        run: |
+          VERSION=$(cat VERSION)
+          hdiutil create \
+            -volname "AcoustiCAD ${VERSION}" \
+            -srcfolder "dist/AcoustiCAD.app" \
+            -ov -format UDZO \
+            "dist/AcoustiCAD-${VERSION}-macOS-AppleSilicon.dmg"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: AcoustiCAD-macOS-AppleSilicon-DMG
+          path: dist/AcoustiCAD-*-macOS-AppleSilicon.dmg
+          retention-days: 30
+
+  # ─────────────────────────────────────────────────────────────
+  # Publish GitHub Release (only on version tags like v0.9.2-beta)
+  # ─────────────────────────────────────────────────────────────
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [build-windows, build-macos-intel, build-macos-arm]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-files
+          merge-multiple: true
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "AcoustiCAD ${{ github.ref_name }}"
+          body: |
+            ## AcoustiCAD ${{ github.ref_name }}
+
+            ### Download
+            | Platform | File |
+            |---|---|
+            | macOS (Apple Silicon — M1/M2/M3) | `AcoustiCAD-*-macOS-AppleSilicon.dmg` |
+            | macOS (Intel) | `AcoustiCAD-*-macOS-Intel.dmg` |
+            | Windows 10/11 | `AcoustiCAD-*-Windows-Setup.exe` |
+
+            **macOS:** Open the DMG and drag AcoustiCAD to Applications.
+            First launch: right-click the app → Open (required once for unsigned apps).
+
+            **Windows:** Run the Setup .exe and follow the installer.
+          draft: false
+          prerelease: ${{ contains(github.ref_name, 'beta') || contains(github.ref_name, 'alpha') }}
+          files: release-files/*

@@ -1,0 +1,26 @@
+{
+  "name": "CDT-5650-C II",
+  "manufacturer": "Klipsch",
+  "model_type": "In-Ceiling",
+  "sensitivity": 93.0,
+  "power_taps": [
+    75.0
+  ],
+  "power_rating": 75.0,
+  "impedance": 8.0,
+  "frequency_range": [
+    50,
+    24000
+  ],
+  "dispersion_angle_h": 90.0,
+  "dispersion_angle_v": 90.0,
+  "directivity_factor": null,
+  "diameter": 6.5,
+  "metadata": {
+    "source": "default",
+    "notes": "6.5\" 2-way pivoting in-ceiling, 8 ohm. High-sensitivity Klipsch for residential and upscale commercial. Swivel tweeter for aimed coverage.",
+    "created_date": "2026-04-01",
+    "modified_date": "2026-04-01"
+  },
+  "frequency_data": {}
+}

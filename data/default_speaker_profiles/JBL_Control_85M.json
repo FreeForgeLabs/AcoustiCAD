@@ -1,0 +1,29 @@
+{
+  "name": "Control 85M",
+  "manufacturer": "JBL",
+  "model_type": "Pendant",
+  "sensitivity": 91.0,
+  "power_taps": [
+    30.0,
+    15.0,
+    7.5,
+    3.75
+  ],
+  "power_rating": 30.0,
+  "impedance": 8.0,
+  "frequency_range": [
+    65,
+    18000
+  ],
+  "dispersion_angle_h": 120.0,
+  "dispersion_angle_v": 120.0,
+  "directivity_factor": null,
+  "diameter": 8.0,
+  "metadata": {
+    "source": "default",
+    "notes": "8\" pendant speaker, 70V transformer. JBL Control Contractor series. Restaurants, atriums, high-bay spaces.",
+    "created_date": "2026-04-01",
+    "modified_date": "2026-04-01"
+  },
+  "frequency_data": {}
+}

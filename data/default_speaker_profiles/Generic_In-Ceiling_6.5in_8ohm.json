@@ -1,0 +1,26 @@
+{
+  "name": "In-Ceiling 6.5\" (8\u03a9)",
+  "manufacturer": "Generic",
+  "model_type": "In-Ceiling",
+  "sensitivity": 89.0,
+  "power_taps": [
+    80.0
+  ],
+  "power_rating": 80.0,
+  "impedance": 8.0,
+  "frequency_range": [
+    60,
+    20000
+  ],
+  "dispersion_angle_h": 110.0,
+  "dispersion_angle_v": 110.0,
+  "directivity_factor": null,
+  "diameter": 6.5,
+  "metadata": {
+    "source": "default",
+    "notes": "Generic 6.5\" in-ceiling 8 ohm placeholder. Use for residential or low-impedance system planning.",
+    "created_date": "2026-04-01",
+    "modified_date": "2026-04-01"
+  },
+  "frequency_data": {}
+}

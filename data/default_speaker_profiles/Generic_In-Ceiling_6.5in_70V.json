@@ -1,0 +1,29 @@
+{
+  "name": "In-Ceiling 6.5\" (70V)",
+  "manufacturer": "Generic",
+  "model_type": "In-Ceiling",
+  "sensitivity": 89.0,
+  "power_taps": [
+    15.0,
+    7.5,
+    3.75,
+    1.875
+  ],
+  "power_rating": 15.0,
+  "impedance": 8.0,
+  "frequency_range": [
+    80,
+    18000
+  ],
+  "dispersion_angle_h": 110.0,
+  "dispersion_angle_v": 110.0,
+  "directivity_factor": null,
+  "diameter": 6.5,
+  "metadata": {
+    "source": "default",
+    "notes": "Generic 6.5\" in-ceiling 70V placeholder. Use for early-stage layout planning before selecting a specific model.",
+    "created_date": "2026-04-01",
+    "modified_date": "2026-04-01"
+  },
+  "frequency_data": {}
+}

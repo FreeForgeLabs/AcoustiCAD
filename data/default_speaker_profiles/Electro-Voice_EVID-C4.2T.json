@@ -1,0 +1,29 @@
+{
+  "name": "EVID-C4.2T",
+  "manufacturer": "Electro-Voice",
+  "model_type": "In-Ceiling",
+  "sensitivity": 88.0,
+  "power_taps": [
+    15.0,
+    7.5,
+    3.75,
+    1.875
+  ],
+  "power_rating": 15.0,
+  "impedance": 8.0,
+  "frequency_range": [
+    90,
+    18000
+  ],
+  "dispersion_angle_h": 115.0,
+  "dispersion_angle_v": 115.0,
+  "directivity_factor": null,
+  "diameter": 4.0,
+  "metadata": {
+    "source": "default",
+    "notes": "4\" 2-way in-ceiling, 70V transformer. Compact EV EVID series. Good for low-ceiling or tight-space installs.",
+    "created_date": "2026-04-01",
+    "modified_date": "2026-04-01"
+  },
+  "frequency_data": {}
+}

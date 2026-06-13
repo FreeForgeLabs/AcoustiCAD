@@ -1,0 +1,29 @@
+{
+  "name": "AP15T",
+  "manufacturer": "Atlas Sound",
+  "model_type": "Pendant",
+  "sensitivity": 88.0,
+  "power_taps": [
+    15.0,
+    7.5,
+    3.75,
+    1.875
+  ],
+  "power_rating": 15.0,
+  "impedance": 8.0,
+  "frequency_range": [
+    70,
+    18000
+  ],
+  "dispersion_angle_h": 160.0,
+  "dispersion_angle_v": 160.0,
+  "directivity_factor": null,
+  "diameter": 5.25,
+  "metadata": {
+    "source": "default",
+    "notes": "5.25\" pendant speaker, 70V transformer. Wide hemispherical coverage. Common in atriums and open areas.",
+    "created_date": "2026-04-01",
+    "modified_date": "2026-04-01"
+  },
+  "frequency_data": {}
+}

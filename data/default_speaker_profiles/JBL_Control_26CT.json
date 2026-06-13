@@ -1,0 +1,29 @@
+{
+  "name": "Control 26CT",
+  "manufacturer": "JBL",
+  "model_type": "In-Ceiling",
+  "sensitivity": 91.0,
+  "power_taps": [
+    30.0,
+    15.0,
+    7.5,
+    3.75
+  ],
+  "power_rating": 30.0,
+  "impedance": 8.0,
+  "frequency_range": [
+    80,
+    18000
+  ],
+  "dispersion_angle_h": 110.0,
+  "dispersion_angle_v": 110.0,
+  "directivity_factor": null,
+  "diameter": 6.5,
+  "metadata": {
+    "source": "default",
+    "notes": "6.5\" 2-way coaxial in-ceiling, 70V transformer. Common commercial install speaker.",
+    "created_date": "2026-04-01",
+    "modified_date": "2026-04-01"
+  },
+  "frequency_data": {}
+}
