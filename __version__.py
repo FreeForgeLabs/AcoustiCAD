@@ -45,7 +45,7 @@ __email__ = "support@freeforgelabs.com"
 __license__ = "MIT"
 __copyright__ = "Copyright 2026 Free Forge Labs"
 __description__ = "Professional audio system design tool for commercial audio systems"
-__url__ = "https://github.com/dustinkznet/AcoustiCAD"
+__url__ = "https://github.com/FreeForgeLabs/AcoustiCAD"
 
 # Build information (populated by CI if/when wired up)
 __build_date__ = None

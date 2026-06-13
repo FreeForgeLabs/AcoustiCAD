@@ -8,7 +8,7 @@
 #expr FileClose(VerFile)
 #undef VerFile
 #define AppPublisher "FreeForgeLabs"
-#define AppURL "https://github.com/dustinkznet/AcoustiCAD"
+#define AppURL "https://github.com/FreeForgeLabs/AcoustiCAD"
 #define AppExeName "AcoustiCAD.exe"
 #define AppId "{{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}"
 

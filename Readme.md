@@ -14,7 +14,7 @@ A professional desktop application for designing audio systems in commercial and
 ## Installation
 
 ### Windows
-1. Download the latest `AcoustiCAD-*-Windows-Setup.exe` from [Releases](https://github.com/dustinkznet/AcoustiCAD/releases)
+1. Download the latest `AcoustiCAD-*-Windows-Setup.exe` from [Releases](https://github.com/FreeForgeLabs/AcoustiCAD/releases)
 2. Run the installer as administrator
 3. Follow the installation wizard
 4. Launch from Start Menu or Desktop shortcut
@@ -49,7 +49,7 @@ A professional desktop application for designing audio systems in commercial and
 
 ## Getting Help
 
-- **Issues**: Report bugs at https://github.com/dustinkznet/AcoustiCAD/issues
+- **Issues**: Report bugs at https://github.com/FreeForgeLabs/AcoustiCAD/issues
 - **Support**: Contact support@freeforgelabs.com
 
 ## Development
@@ -58,5 +58,5 @@ A professional desktop application for designing audio systems in commercial and
 
 ```bash
 # Clone the repository
-git clone https://github.com/dustinkznet/AcoustiCAD.git
+git clone https://github.com/FreeForgeLabs/AcoustiCAD.git
 cd AcoustiCAD

@@ -27,7 +27,7 @@ setup(
     description="Professional audio system design tool for commercial and residential venues",
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
-    url="https://github.com/dustinkznet/AcoustiCAD",
+    url="https://github.com/FreeForgeLabs/AcoustiCAD",
     packages=find_packages(exclude=["venv*", "tests*", ".idea*"]),
     classifiers=[
         "Development Status :: 4 - Beta",
