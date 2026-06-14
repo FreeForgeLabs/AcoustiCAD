@@ -7,6 +7,12 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed
+- **Consolidated all runtime data under one root.** Logs and crashes were written to `~/AcoustiCAD/` while settings, projects, and backups lived in `~/Library/Application Support/AcoustiCAD/` (the "two distinct dirs" quirk). Both `main.py` and `core/speaker_profiles.py` now resolve the runtime root via Storage's `_platform_app_dir()`, so there's a single source of truth and nothing lands in the bare home folder. Removed the now-dead home-dir legacy migration (Storage already handles the `AudioSystemDesigner` rename) and the unused `LEGACY_APP_NAME` import. Reports remain in `~/Documents/AcoustiCAD Reports/` (user-visible output).
+
+### Removed
+- Retired the maintained `/Applications/AcoustiCAD.app` local install — the project is build-from-source only now (CI still builds `.dmg`/`.exe` on `v*` tags for anyone who wants a binary).
+
 ## [0.9.5-beta] - 2026-05-27
 
 ### Changed
