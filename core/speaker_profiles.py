@@ -242,8 +242,10 @@ class SpeakerProfileManager:
 
         # Set up profiles directory
         if profiles_dir is None:
-            # Default to a directory in user's home
-            self.profiles_dir = Path.home() / _APP_NAME / "speaker_profiles"
+            # Default to the OS user-data dir (~/Library/Application Support/AcoustiCAD
+            # on macOS) — same runtime root as Storage, never the bare home folder.
+            from utils.storage import _platform_app_dir
+            self.profiles_dir = Path(_platform_app_dir(_APP_NAME)) / "speaker_profiles"
         else:
             self.profiles_dir = Path(profiles_dir)
 

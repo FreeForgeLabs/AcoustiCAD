@@ -6,6 +6,7 @@ from pathlib import Path
 
 from utils.dev_mode import DevTools
 from utils.logger import get_logger
+from utils.storage import _platform_app_dir
 from ui.styles.base_styles import BaseStyles
 
 from error_handler import setup_error_handling, setup_logging
@@ -16,28 +17,20 @@ __version__ = version_module.__version__
 APP_NAME = version_module.APP_NAME
 APP_ORGANIZATION = version_module.APP_ORGANIZATION
 APP_DOMAIN = version_module.APP_DOMAIN
-LEGACY_APP_NAME = version_module.LEGACY_APP_NAME
 get_version_string = version_module.get_version_string
 
 
 def setup_application_directories():
     """Set up application directories with proper error handling.
 
-    Uses APP_NAME (single source of truth from __version__.py). On first launch
-    after the rename, transparently inherit the prior AudioSystemDesigner dir
-    so users don't lose crash logs / projects / etc.
+    Runtime data (logs, crashes, projects, etc.) lives in the OS user-data dir —
+    ~/Library/Application Support/AcoustiCAD on macOS — the same place Storage
+    uses. This keeps everything under one runtime root instead of also littering
+    the home folder with a stray ~/AcoustiCAD. Path comes from Storage's
+    _platform_app_dir() so the two modules can never drift (single source of truth).
+    The legacy AudioSystemDesigner → AcoustiCAD migration is handled by Storage.
     """
-    app_dir = Path.home() / APP_NAME
-    legacy_dir = Path.home() / LEGACY_APP_NAME
-
-    # One-shot rename migration: only fires when legacy exists AND new doesn't.
-    # After it runs once, the new dir's existence is the sentinel — no-op forever after.
-    if legacy_dir.exists() and not app_dir.exists():
-        try:
-            legacy_dir.rename(app_dir)
-            print(f"Migrated app directory: {legacy_dir} → {app_dir}")
-        except OSError as e:
-            print(f"Warning: could not migrate legacy app dir ({e}); will create fresh {app_dir}")
+    app_dir = Path(_platform_app_dir(APP_NAME))
 
     try:
         app_dir.mkdir(exist_ok=True)
