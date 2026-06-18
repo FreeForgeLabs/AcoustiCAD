@@ -7,6 +7,16 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-06-18
+
+First stable release. The app is functional end-to-end (projects → zones → plotter → reports) and crash-free across the surfaces exercised during the beta. Licensed MIT.
+
+### Changed
+- **Reconciled the license to MIT everywhere.** The `LICENSE` file was MIT, but the startup dialog's welcome text still claimed "GPL v3 + a separate commercial license" (a leftover from before the PySide6 migration made non-GPL licensing possible). Updated the dialog text to state MIT — free for personal, educational, and commercial use — and dropped the "All rights reserved" copyright line, which contradicts an open-source license. License story is now consistent ahead of 1.0.
+
+### Verified
+- Swept the codebase for surviving PySide6 scoped-enum *instance-access* bugs (the class behind the session-13 obstruction crash). All `exec()` result checks use either explicit `QDialog.DialogCode.Accepted` comparisons or plain int-truthiness; the one `dialog.SAVE`/`dialog.CANCEL` pattern reads custom class constants, not Qt enums. No surviving bugs of this class. Confirmed `QMessageBox`/`Qt`/`QDialog` class-level short-form enum access still resolves in PySide6 6.11.
+
 ## [0.9.6-beta] - 2026-06-18
 
 ### Fixed

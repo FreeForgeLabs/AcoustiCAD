@@ -89,9 +89,9 @@ class StartupDialog(QDialog):
 Thank you for demoing our software. We're excited to help you create amazing audio experiences and design professional sound systems with precision and ease.
 
 LICENSING & USAGE
-This software is free for personal, educational, and non-commercial use under the GPL v3 license. Commercial users and businesses require a separate commercial license. By using this software, you agree to these terms.
+This software is free and open source under the MIT license — free for personal, educational, and commercial use. See the LICENSE file for full terms.
 
-Copyright © 2026 Free Forge Labs. All rights reserved.
+Copyright © 2026 Free Forge Labs. Released under the MIT License.
 
 ⚠️ BETA SOFTWARE NOTICE
 This is beta software and may contain bugs or incomplete features. Please save your work frequently and report any issues.
