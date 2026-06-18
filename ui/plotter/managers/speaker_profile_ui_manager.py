@@ -139,7 +139,7 @@ class SpeakerProfileUIManager(QObject):
         """Handle create profile button click"""
         dialog = SpeakerProfileDialog(self.parent())
 
-        if dialog.exec() == QDialog.Accepted:
+        if dialog.exec() == QDialog.DialogCode.Accepted:
             # Get profile from dialog
             profile = dialog.get_profile()
 
@@ -171,7 +171,7 @@ class SpeakerProfileUIManager(QObject):
         # Show profile dialog with selected profile
         dialog = SpeakerProfileDialog(self.parent(), self.selected_profile)
 
-        if dialog.exec() == QDialog.Accepted:
+        if dialog.exec() == QDialog.DialogCode.Accepted:
             # Get updated profile from dialog
             updated_profile = dialog.get_profile()
 

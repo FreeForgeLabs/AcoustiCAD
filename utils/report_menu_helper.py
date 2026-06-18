@@ -492,7 +492,7 @@ Report Types:
             layout.addWidget(button_box)
 
             # Show dialog and get result
-            if dialog.exec() == QDialog.Accepted:
+            if dialog.exec() == QDialog.DialogCode.Accepted:
                 selected = []
                 if self.project_cb.isChecked():
                     selected.append("project")

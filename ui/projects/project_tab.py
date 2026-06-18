@@ -3,7 +3,7 @@ import json
 import logging
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
                              QLabel, QListWidget, QListWidgetItem,
-                             QFileDialog, QFrame)
+                             QFileDialog, QFrame, QDialog)
 from PySide6.QtCore import Qt, Signal
 
 from ui.projects.project_item_widget import ProjectItemWidget
@@ -333,7 +333,7 @@ class ProjectTab(QWidget):
 
     def on_new_project(self):
         dialog = ProjectDialog(self)
-        if dialog.exec() != dialog.Accepted:
+        if dialog.exec() != QDialog.DialogCode.Accepted:
             return
 
         project_data = dialog.get_project_data()
@@ -362,7 +362,7 @@ class ProjectTab(QWidget):
             return
 
         dialog = ProjectDialog(self, existing_project=project_data)
-        if dialog.exec() != dialog.Accepted:
+        if dialog.exec() != QDialog.DialogCode.Accepted:
             return
 
         updated_data = dialog.get_project_data()

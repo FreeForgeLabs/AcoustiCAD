@@ -329,7 +329,7 @@ class ControllerManager:
         remove_action = menu.addAction("Remove Controller")
 
         # Show the menu and get the selected action
-        action = menu.exec_(self.controllers_list.mapToGlobal(position))
+        action = menu.exec(self.controllers_list.mapToGlobal(position))
 
         if action == edit_action:
             self.edit_controller_quantity(item)

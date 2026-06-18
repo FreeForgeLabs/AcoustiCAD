@@ -7,6 +7,11 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.9.6-beta] - 2026-06-18
+
+### Fixed
+- **Placing an obstruction crashed the app** (`'ObstructionDialog' object has no attribute 'Accepted'`). Leftover from the PyQt5→PySide6 migration: Qt6 made dialog result codes *scoped* enums, so reading `Accepted` off a dialog *instance* (`dialog.Accepted`) no longer resolves. The session-9 bulk `sed` caught `exec_()→exec()` but not this pattern because `dialog.Accepted` is still valid Python — it just throws at runtime. Swept the whole codebase for the bug class and standardized all 8 dialog-result checks to the future-proof `QDialog.DialogCode.Accepted` (`plotter_tab.py`, `project_tab.py` ×2, `speaker_profile_ui_manager.py` ×2, `properties_panel.py`, `report_menu_helper.py`, and the AutoLayout check). Also fixed 2 stale `menu.exec_()` context-menu calls (`material_manager.py`, `controller_manager.py`). Added the missing `QDialog` import to `plotter_tab.py` and `project_tab.py`. The 3 instance-access sites were live crashes (only obstructions had been clicked); the rest were deprecated Qt5-isms cleaned up for a warning-free 1.0.
+
 ### Changed
 - **Consolidated all runtime data under one root.** Logs and crashes were written to `~/AcoustiCAD/` while settings, projects, and backups lived in `~/Library/Application Support/AcoustiCAD/` (the "two distinct dirs" quirk). Both `main.py` and `core/speaker_profiles.py` now resolve the runtime root via Storage's `_platform_app_dir()`, so there's a single source of truth and nothing lands in the bare home folder. Removed the now-dead home-dir legacy migration (Storage already handles the `AudioSystemDesigner` rename) and the unused `LEGACY_APP_NAME` import. Reports remain in `~/Documents/AcoustiCAD Reports/` (user-visible output).
 

@@ -4,7 +4,7 @@ import os
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel, QTreeWidget,
                              QApplication, QFrame, QStackedWidget,
                              QComboBox, QPushButton, QButtonGroup, QListWidget,
-                             QDoubleSpinBox)
+                             QDoubleSpinBox, QDialog)
 from PySide6.QtCore import Qt, Signal, QTimer
 from PySide6.QtGui import QKeySequence, QShortcut
 
@@ -868,7 +868,7 @@ class PlotterTab(QWidget):
         # Open selection dialog
         from ui.plotter.dialogs.obstruction_dialog import ObstructionDialog
         dialog = ObstructionDialog(self)
-        if dialog.exec() != dialog.Accepted:
+        if dialog.exec() != QDialog.DialogCode.Accepted:
             return
 
         result = dialog.get_result()
@@ -902,7 +902,7 @@ class PlotterTab(QWidget):
             current_profile=self._get_selected_profile(),
             parent=self,
         )
-        if dialog.exec() == AutoLayoutDialog.Accepted:
+        if dialog.exec() == QDialog.DialogCode.Accepted:
             result = dialog.get_result()
             if result:
                 profile, grid_type, overlap_pct, layout_method = result

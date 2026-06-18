@@ -476,7 +476,7 @@ class MaterialManager:
         remove_action = menu.addAction("Remove Material")
 
         # Show the menu and get the selected action
-        action = menu.exec_(self.materials_list.mapToGlobal(position))
+        action = menu.exec(self.materials_list.mapToGlobal(position))
 
         if action == edit_action:
             self.edit_material_quantity(item)

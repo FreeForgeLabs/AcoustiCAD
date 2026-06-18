@@ -631,7 +631,7 @@ class PropertiesPanel(QWidget):
             # Show dialog
             result = dialog.exec()
 
-            if result == QDialog.Accepted:
+            if result == QDialog.DialogCode.Accepted:
                 # Get zone data from dialog
                 zone_data = dialog.get_zone_data()
 
